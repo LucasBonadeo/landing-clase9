@@ -7,12 +7,13 @@ import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-export function Main() {
+export function Main({ darkMode }) {
   useEffect(() => {
     AOS.init();
   }, []);
+
   return (
-    <main id="main-principal">
+    <main id="main-principal" className={darkMode ? "darkMain" : "whiteMain"}>
       <section id="metaverso">
         <div className="row align-items-center">
           <div className="container-fluid col-md-10 col-lg-5">
@@ -25,7 +26,7 @@ export function Main() {
             </article>
           </div>
           <div className="container-fluid col-md-10 col-lg-5">
-            <video data-aos="fade-left" autoplay muted loop>
+            <video data-aos="fade-left" autoPlay muted loop>
               <source src={VideoCampus} type="video/mp4" />
               Your browser does not support the video tag.
             </video>

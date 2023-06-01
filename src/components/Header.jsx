@@ -1,35 +1,30 @@
 import LogoVirbela from "../img/logo-virbela.png";
 import { RedesSociales } from "./RedesSociales";
 import { ButtonDarkMode } from "./ButtonDarkMode";
-import React, { useState } from "react";
 
-export function Header() {
-  const [navbarClasses, setNavbarClasses] = useState(
-    "navbar navbar-expand-lg navbar-light bg-light"
-  );
-  const [toggleMenuClasses, setToggleMenuClasses] = useState(
-    "dropdown-item text-dark bg-white"
-  );
-  const [darkMode, setDarkMode] = useState(false);
+export function Header({ darkMode, onDarkModeClick }) {
+  const navbarClasses = darkMode
+    ? "navbar navbar-expand-lg navbar-dark bg-dark"
+    : "navbar navbar-expand-lg navbar-light bg-light";
+
+  const toggleMenuButtonClasses = darkMode
+    ? "dropdown-menu bg-dark"
+    : "dropdown-menu";
+
+  const toggleMenuClasses = darkMode
+    ? "dropdown-item text-white bg-dark"
+    : "dropdown-item text-dark bg-white";
 
   const handleDarkModeClick = () => {
-    if (!darkMode) {
-      setNavbarClasses("navbar navbar-expand-lg navbar-dark bg-dark");
-      setToggleMenuClasses("dropdown-item text-white bg-dark");
-      setDarkMode(true);
-    } else {
-      setNavbarClasses("navbar navbar-expand-lg navbar-light bg-light");
-      setToggleMenuClasses("dropdown-item text-dark bg-white");
-      setDarkMode(false);
-    }
+    onDarkModeClick(!darkMode);
   };
 
   return (
     <header>
-      <nav className={navbarClasses}>
+      <nav className={navbarClasses} id="navBar">
         <div className="container-fluid">
           <img src={LogoVirbela} alt="" width="30" height="24" />
-          <a className="navbar-brand" href="#">
+          <a className="navbar-brand" href="index.html">
             VIRBELA
           </a>
           <button
@@ -45,19 +40,10 @@ export function Header() {
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                {/* <a
-                  className="nav-link active"
-                  aria-current="page"
-                  href="register.html"
-                >
-                  Ingresar
-                </a> */}
-              </li>
               <li className="nav-item dropdown">
                 <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
+                  className="nav-link dropdown-toggle "
+                  href="#navBar"
                   id="navbarDropdown"
                   role="button"
                   data-bs-toggle="dropdown"
@@ -66,7 +52,7 @@ export function Header() {
                   Temario Evento
                 </a>
                 <ul
-                  className="dropdown-menu bg-dark"
+                  className={toggleMenuButtonClasses}
                   aria-labelledby="navbarDropdown"
                 >
                   <li>

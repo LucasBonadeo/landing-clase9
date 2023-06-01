@@ -8,7 +8,7 @@ export function HeroImage() {
           <strong>EVENTO VIRBELA METAVERSO 2023</strong>
         </h1>
         <h2 className="display-5 text-center">El Metaverso ya está aquí.</h2>
-        <a href="register.html" className="rotate-360">
+        <a href="#form" className="rotate-360">
           ¡Quiero ir!
         </a>
       </div>
